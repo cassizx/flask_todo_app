@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+<body>
+    <form class="login-form" action="/singup" method="POST">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="notification is-danger">
+            {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">login page</a>.
+        </div>
+    {% endif %}
+    {% endwith %}
+        <p class="login-text">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-lock fa-stack-1x"></i>
+          </span>
+        </p>
+        <input type="text" name="name" class="login-username" autofocus="true" required="true" placeholder="Имя" />
+        <input type="email" name="email" class="login-username" autofocus="true" required="true" placeholder="Email" />
+        <input type="password" name="password" class="login-password" required="true" placeholder="Пароль" />
+        <input type="submit" name="Login" value="Зарегистрироваться" class="login-submit" />
+    </form>
+      <div class="underlay-photo"></div>
+      <div class="underlay-black"></div>
+</body>
+{% endblock %}

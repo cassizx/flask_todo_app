@@ -1,0 +1,136 @@
+
+{% extends 'base.html' %}
+{% block head_links %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+{% endblock %}
+{% block body %}
+<body>
+    <header>
+      <div class="">
+      <!-- Navbar -->
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+              <div class="container-fluid">
+                <p class="user_name input-group w-auto">
+                  Привет, {{ name }}
+                </p>
+
+              </div>
+              {% if name %}
+              <form action="/logout" class="d-flex input-group w-auto">
+                  <button
+                  class="btn btn-secondary"
+                  type="submit"
+                  data-mdb-ripple-color="dark"
+                  >
+                  Выйти
+                  </button>
+              </form>
+              {% else %}
+                  <form action="/login" class="d-flex input-group w-auto">
+                      <button
+                      class="btn btn-primary"
+                      type="submit"
+                      data-mdb-ripple-color="dark"
+                      >
+                      Login
+                      </button>
+                  </form>
+              {% endif %}
+        </nav>
+        <!-- Navbar end -->
+      </div>
+  </header>
+  <div class="deleted deleted_fade">
+    <p>Задача удалена</p>
+  </div>
+  <section class="tasks ">
+        <div class="status_todo">
+            <h3 class="tasks__title">
+              <span>Todo list
+                <i class="add_task_btn fas fa-plus-circle" data-toggle="modal"  data-target="#exampleModal"></i>
+              </span>
+            </h3>
+            <ul class="tasks__list list-group" draggable="true">
+                <li class="tasks__item test" draggable="false" aria-disabled="true">
+                  <p> Место для задачки, что бы создать её нажмите на:
+                    <i class="add_task_btn fas fa-plus-circle" data-toggle="modal"  data-target="#exampleModal"></i>
+                  </p>
+                </li>
+            </ul>
+        </div>
+        <div class="status_done">
+            <h3 class="tasks__title">Done list</h3>
+            <ul class="tasks__list__done list-group" draggable="true" >
+              <li class="tasks__item test" draggable="false" aria-disabled="true"></li>
+            </ul>
+        </div>
+    </section>
+
+        <!-- MODAL ADD -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Новая задача</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id='new_task_form'>
+                    <div class="form-group">
+                      <label for="new_task_subject" class="col-form-label">Тема:</label>
+                      <input type="text" class="form-control" id="new_task_subject" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="new_task_text" class="col-form-label">Текст:</label>
+                      <textarea class="form-control" id="new_task_text" required></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                  <button type="button" class="btn btn-dark send_new_task">Создать</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- PUT MODAL -->
+        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Задача</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id='put_task_form'>
+                  <input type="hidden" class="update_form_task_id" value=''>
+                  <input type="hidden" class="update_form_task_current_state" value=''>
+                  <div class="form-group">
+                    <label for="task_subject" class="col-form-label">Тема:</label>
+                    <input type="text" class="form-control" id="task_subject" value="" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="task_text" class="col-form-label">Текст:</label>
+                    <textarea class="form-control" id="task_text" required value=""></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-dark delete_task_btn">Удалить</button>
+                <button type="button" class="btn btn-dark update_task_btn">Обновить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% endblock %}

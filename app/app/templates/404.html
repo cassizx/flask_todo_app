@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body %}
+<body>
+    <div>
+        <p class="error404">
+            Ошибка 404 url не найден.
+            <a href="{{ url_for('index') }}">На главную страницу</a>
+        </p>
+    </div>
+    <div class="underlay-photo"></div>
+    <div class="underlay-black"></div>
+</body>
+{% endblock %}

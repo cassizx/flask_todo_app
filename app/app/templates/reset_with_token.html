@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body %}
+<body>
+    <form class="login-form" action="{{ url_for('reset_with_token', token=token) }}" method="POST">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="notification is-succes">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+    {% endwith %}
+        <p class="login-text">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-lock fa-stack-1x"></i>
+          </span>
+        </p>
+        <input type="password" name="password1" class="login-username" autofocus="true" required="true" placeholder="Новый пароль" />
+        <input type="password" name="password2" class="login-username" autofocus="true" required="true" placeholder="Повторите новый пароль" />
+        <input type="submit" name="Change password" value="Send reset e-mail" class="login-submit" />
+    </form>
+      <div class="underlay-photo"></div>
+      <div class="underlay-black"></div>
+</body>
+{% endblock %}

@@ -1,0 +1,124 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700);
+body {
+font-size: 18px;
+font-family: 'Open Sans' !important;
+font-weight: 100;
+line-height: 25px;
+color: #f8f8f8;
+background-color: #e5e7e7 !important;
+}
+nav{
+    background-color: black !important;
+}
+.user_name{
+    color: white;
+    margin: 0;
+}
+a {
+    text-decoration: none !important;
+    cursor: pointer !important;
+    color: black !important;
+}
+.deleted{
+    position: relative;
+    left: 33.5%;
+    max-width: 250px;
+    height: 60px !important;
+    background-color: rgb(209, 181, 145);
+    z-index: 1;
+    border-radius: 10px;
+}
+.deleted_fade{
+    display: none;
+}
+.tasks {
+    margin: 0 auto;
+    width: 750px;
+    display: flex;
+}
+.tasks div {
+    width: 300px;
+    flex-wrap: wrap;
+    flex: auto;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+}
+.tasks ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.task__item_header h5{
+    max-height: 25px;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 0;
+}
+.add_task_btn{
+    text-justify: auto;
+    margin-left: 4px;
+    margin-bottom: -2px !important;
+    margin-top: 3px !important;
+}
+.add_task_btn:hover{
+    box-shadow: 2px #949494;
+    cursor: pointer;
+}
+.tasks__title {
+    margin: 50px 0 20px 0;
+    height: 25px;
+    margin-left: 16%;
+}
+.tasks__title i{
+    margin-left: 33% !important;
+}
+.tasks__list,.tasks__list__done  {
+    min-height: 50px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.tasks__list__done li {
+    text-decoration: line-through;
+}
+.tasks__item, .tasks__done__item{
+    flex: auto;
+    align-items: start;
+    width: 250px;
+    height: 125px;
+    transition: background-color 0.5s;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+    border: 2px #b2d9d0;
+    border-radius: 10px;
+    cursor: move;
+    background-color: #ffffff !important;
+    transition: background-color 0.5s;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.test{
+    box-shadow: none !important;
+    background-color: #e5e7e7 !important;
+    color: #4e4e4e !important;
+    text-decoration: none !important;
+    justify-content: center;
+    cursor: not-allowed !important;
+    display: none;
+}
+.test:last-child{
+    display: block;
+}
+.tasks__item:last-child {
+    margin-bottom: 0;
+}
+.tasks__item p, .tasks__done__item p{
+    border-top: 1px solid rgb(155, 155, 155);
+    border-radius: 10px;
+    content: "";
+}
+.selected {
+    opacity: 0.6;
+}
